@@ -27,7 +27,7 @@ sequelize.authenticate()
   })
 
 // sync the database
-sequelize.sync({ force: true }).then (() => {
+sequelize.sync({ force: false }).then (() => {
   console.log('Force sync the database success!!')
 }).catch (error => {
   console.log(error)

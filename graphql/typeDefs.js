@@ -1,21 +1,19 @@
 const { gql } = require('apollo-server-express')
 module.exports = gql`
-type User {
-  username: ID!
-  permission: Int
-  authCode: String
-  assets: Float
-}
+scalar Date
+
 type TransactionType {
   tid: ID!
   name: String
 }
 type Transaction {
   tid: ID!
-  user: String
-  target: String
+  user: User
+  target: User
   type: TransactionType
   value: Float
+  createdAt: Date
+  updatedAt: Date
 }
 type InsuranceType {
   itid: ID!
@@ -24,13 +22,27 @@ type InsuranceType {
 }
 type Insurance {
   id: ID!
-  user: String
+  user: User
   type: InsuranceType
   terms: Int
+  createdAt: Date
+  updatedAt: Date
+}
+type User {
+  username: ID!
+  permission: Int
+  authCode: String
+  assets: Float
+  transactions: [Transaction!]!
+  insurances: [Insurance!]!
+}
+type Users {
+  count(username: String): Int
+  rows(username: String): [User!]!
 }
 type Query {
-  hello: String
-  users: [User!]!
+  users(username: String): Users,
+  user(username: String!): User
   transactions: [Transaction!]!
   insurances: [Insurance!]!
 }

@@ -43,6 +43,10 @@ module.exports = (sequelize, Datatypes) => {
       // define the type field belong to transaction types table tid field
       models.Transactions.belongsTo(models.TransactionTypes, { foreignKey: 'type', targetKey: 'tid' })
     }
+  }, {
+    indexes: [
+      { fields: ['user', 'target'], unique: true }
+    ]
   })
 
   return transaction

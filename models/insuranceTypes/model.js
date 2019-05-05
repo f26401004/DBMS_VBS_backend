@@ -26,7 +26,7 @@ module.exports = (sequelize, Datatypes) => {
   }, {
     associate: function (models) {
       // define the itid field has many in insurance table
-      models.InsuranceTypes.hasMany(models.Transactions, { foreignKey: 'type', sourceKey: 'itid' })
+      models.InsuranceTypes.hasMany(models.Insurances, { foreignKey: 'type', sourceKey: 'itid' })
     }
   })
 
