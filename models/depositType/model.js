@@ -1,5 +1,5 @@
 module.exports = (sequelize, Datatypes) => {
-  const transactionType = sequelize.define('TransactionTypes', {
+  const depositType = sequelize.define('DepositTypes', {
     id: {
       type: Datatypes.INTEGER(),
       primaryKey: true,
@@ -9,6 +9,14 @@ module.exports = (sequelize, Datatypes) => {
     },
     name: {
       type: Datatypes.STRING(),
+      allowNull: false
+    },
+    floating_interest: {
+      type: Datatypes.DOUBLE(8, 5),
+      allowNull: false
+    },
+    fixed_interest: {
+      type: Datatypes.DOUBLE(8, 5),
       allowNull: false
     },
     createdBy: {
@@ -21,10 +29,9 @@ module.exports = (sequelize, Datatypes) => {
     }
   }, {
     associate: function (models) {
-      // define the tid field has many in transaction table
-      models.TransactionTypes.hasMany(models.Transactions, { foreignKey: 'type', sourceKey: 'id' })
+      models.DepositTypes.hasMany(models.Deposits, { foreignKey: 'type', sourceKey: 'id' })
     }
   })
 
-  return transactionType
+  return depositType
 }

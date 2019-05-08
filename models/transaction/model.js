@@ -1,8 +1,6 @@
-const errorHandler = require('../errorHandler')
-
 module.exports = (sequelize, Datatypes) => {
   const transaction = sequelize.define('Transactions', {
-    tid: {
+    id: {
       type: Datatypes.UUID(),
       defaultValues: Datatypes.UUIDV4(),
       primaryKey: true,
@@ -20,6 +18,10 @@ module.exports = (sequelize, Datatypes) => {
     type: {
       type: Datatypes.INTEGER(),
       defaultValues: 0,
+      allowNull: false
+    },
+    cardNo: {
+      type: Datatypes.STRING(16),
       allowNull: false
     },
     value: {
@@ -41,7 +43,9 @@ module.exports = (sequelize, Datatypes) => {
       models.Transactions.belongsTo(models.Users, { foreignKey: 'user', targetKey: 'username' })
       models.Transactions.belongsTo(models.Users, { foreignKey: 'target', targetKey: 'username'})
       // define the type field belong to transaction types table tid field
-      models.Transactions.belongsTo(models.TransactionTypes, { foreignKey: 'type', targetKey: 'tid' })
+      models.Transactions.belongsTo(models.TransactionTypes, { foreignKey: 'type', targetKey: 'id' })
+      // define the cardNo belong to cards table cardNo field
+      models.Transactions.belongsTo(models.Cards, { foreignKey: 'cardNo', targetKey: 'cardNo' })
     }
   }, {
     indexes: [

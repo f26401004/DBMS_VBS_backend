@@ -1,11 +1,10 @@
 module.exports = (sequelize, Datatypes) => {
-  const transactionType = sequelize.define('TransactionTypes', {
+  const cardType = sequelize.define('CardTypes', {
     id: {
       type: Datatypes.INTEGER(),
       primaryKey: true,
-      allowNull: false,
       unique: true,
-      autoIncrement: true
+      allowNull: false
     },
     name: {
       type: Datatypes.STRING(),
@@ -14,17 +13,16 @@ module.exports = (sequelize, Datatypes) => {
     createdBy: {
       type: Datatypes.STRING(),
       allowNull: false
-    },
+    },  
     updatedBy: {
       type: Datatypes.STRING(),
       allowNull: false
     }
   }, {
     associate: function (models) {
-      // define the tid field has many in transaction table
-      models.TransactionTypes.hasMany(models.Transactions, { foreignKey: 'type', sourceKey: 'id' })
+      models.CardTypes.hasMany(models.Cards, { foreignKey: 'type', sourceKey: 'id' })
     }
   })
 
-  return transactionType
+  return cardType
 }

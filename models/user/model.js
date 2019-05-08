@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs')
-const errorHandler = require('../errorHandler')
+const errorHandler = require('../../utils/errorHandler.js')
 
 module.exports = (sequelize, Datatypes) => {
   const user = sequelize.define('Users', {
@@ -15,6 +15,11 @@ module.exports = (sequelize, Datatypes) => {
       unique: true
     },
     authCode: {
+      type: Datatypes.STRING(),
+      allowNull: false,
+      unique: true
+    },
+    SSN: {
       type: Datatypes.STRING(),
       allowNull: false,
       unique: true
@@ -42,6 +47,8 @@ module.exports = (sequelize, Datatypes) => {
       models.Users.hasMany(models.Transactions, { foreignKey: 'user', sourceKey: 'username' })
       models.Users.hasMany(models.Transactions, { foreignKey: 'target', sourceKey: 'username' })
       models.Users.hasMany(models.Insurances, { foreignKey: 'user', sourceKey: 'username' })
+      models.Users.hasMany(models.Cards, { foreignKey: 'owner', sourceKey: 'username' })
+      models.Users.hasMany(models.Deposits, { foreignKey: 'user', sourceKey: 'username' })
     }
   })
 

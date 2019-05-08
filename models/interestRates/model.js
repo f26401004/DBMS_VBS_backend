@@ -1,14 +1,17 @@
 module.exports = (sequelize, Datatypes) => {
-  const transactionType = sequelize.define('TransactionTypes', {
+  const interestRate = sequelize.define('InterestRates', {
     id: {
       type: Datatypes.INTEGER(),
       primaryKey: true,
       allowNull: false,
-      unique: true,
-      autoIncrement: true
+      unique: true
     },
     name: {
       type: Datatypes.STRING(),
+      allowNull: false
+    },
+    value: {
+      type: Datatypes.DOUBLE(8, 5),
       allowNull: false
     },
     createdBy: {
@@ -21,10 +24,8 @@ module.exports = (sequelize, Datatypes) => {
     }
   }, {
     associate: function (models) {
-      // define the tid field has many in transaction table
-      models.TransactionTypes.hasMany(models.Transactions, { foreignKey: 'type', sourceKey: 'id' })
     }
   })
 
-  return transactionType
+  return interestRate
 }

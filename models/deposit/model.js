@@ -1,5 +1,5 @@
 module.exports = (sequelize, Datatypes) => {
-  const insurance = sequelize.define('Insurances', {
+  const deposit = sequelize.define('Deposits', {
     id: {
       type: Datatypes.UUID(),
       defaultValues: Datatypes.UUIDV4(),
@@ -34,10 +34,10 @@ module.exports = (sequelize, Datatypes) => {
     }
   }, {
     associate: function (models) {
-      models.Insurances.belongsTo(models.Users, { foreignKey: 'user', targetKey: 'username' })
-      models.Insurances.belongsTo(models.InsuranceTypes, { foreignKey: 'type', targetKey: 'id' })
+      models.Deposits.belongsTo(models.Users, { foreignKey: 'user', targetKey: 'username' })
+      models.Deposits.belongsTo(models.DepositTypes, { foreignKey: 'type', targetKey: 'id' })
     }
   })
 
-  return insurance
+  return deposit
 }

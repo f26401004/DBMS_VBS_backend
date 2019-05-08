@@ -1,6 +1,6 @@
 module.exports = (sequelize, Datatypes) => {
   const insuranceType = sequelize.define('InsuranceTypes', {
-    itid: {
+    id: {
       type: Datatypes.INTEGER(),
       primaryKey: true,
       allowNull: false,
@@ -11,9 +11,18 @@ module.exports = (sequelize, Datatypes) => {
       type: Datatypes.STRING(),
       allowNull: false
     },
-    interest_rate: {
-      type: Datatypes.DOUBLE(8, 4),
+    value: {
+      type: Datatypes.INTEGER(),
       allowNull: false
+    },
+    interest_rate: {
+      type: Datatypes.DOUBLE(8, 5),
+      allowNull: false
+    },
+    terms: {
+      type: Datatypes.INTEGER(),
+      allowNull: false,
+      defaultValues: 1
     },
     createdBy: {
       type: Datatypes.STRING(),
@@ -26,7 +35,7 @@ module.exports = (sequelize, Datatypes) => {
   }, {
     associate: function (models) {
       // define the itid field has many in insurance table
-      models.InsuranceTypes.hasMany(models.Insurances, { foreignKey: 'type', sourceKey: 'itid' })
+      models.InsuranceTypes.hasMany(models.Insurances, { foreignKey: 'type', sourceKey: 'id' })
     }
   })
 
