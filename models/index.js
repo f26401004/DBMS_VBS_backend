@@ -50,6 +50,8 @@ for (let key in db) {
 sequelize.sync({ force: config.forceSync }).then (async () => {
   if (config.forceSync) {
     console.log('Force sync the database success!!')
+    await db.Users.bulkCreate(insertData.users)
+    console.log('default user table complete initialization')
     await db.InterestRates.bulkCreate(insertData.interestRates)
     console.log('default interest rate table complete initialization')
     await db.TransactionTypes.bulkCreate(insertData.transacionTypes)

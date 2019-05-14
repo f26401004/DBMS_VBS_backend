@@ -10,17 +10,17 @@ module.exports = (sequelize, Datatypes) => {
       unique: true
     },
     password: {
-      type: Datatypes.STRING(),
+      type: Datatypes.CHAR(60),
       allowNull: false,
       unique: true
     },
     authCode: {
-      type: Datatypes.STRING(),
+      type: Datatypes.CHAR(20),
       allowNull: false,
       unique: true
     },
     SSN: {
-      type: Datatypes.STRING(),
+      type: Datatypes.CHAR(10),
       allowNull: false,
       unique: true
     },
