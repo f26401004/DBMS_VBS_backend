@@ -42,33 +42,6 @@ module.exports = {
       return data
     },
   },
-  Users: {
-    count: async function (parent, args, context, info) {
-      if (args.username) {
-        const count = await context.db.Users.count({
-          where: { 
-            username: args.username
-          }
-        })
-        return count
-      }
-      const count = await context.db.Users.count()
-      return count
-    },
-    rows: async function (parent, args, context, info) {
-      let data
-      if (args.username) {
-        data = await context.db.Users.findAll({
-          where: {
-            username: args.username
-          }
-        })
-        return data
-      }
-      data = await context.db.Users.findAll()
-      return data
-    }
-  },
   Query: {
     user: async function (parent, args, context, info) {
       const data = await context.db.Users.findOne({
@@ -77,7 +50,8 @@ module.exports = {
       return data
     },
     users: async function (parent, args, context, info) {
-      return context.db.Users
+      const data = await context.db.Users.findAll()
+      return data
     },
     transactions: async function (parent, args, context, info) {
       const data = await context.db.Transactions.findAll()

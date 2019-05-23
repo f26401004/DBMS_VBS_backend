@@ -30,18 +30,17 @@ type Insurance {
 }
 type User {
   username: ID!
+  SSN: String
   permission: Int
   authCode: String
   assets: Float
+  createdAt: Date
+  updatedAt: Date
   transactions: [Transaction!]!
   insurances: [Insurance!]!
 }
-type Users {
-  count(username: String): Int
-  rows(username: String): [User!]!
-}
 type Query {
-  users(username: String): Users,
+  users(username: String): [User!]!,
   user(username: String!): User
   transactions: [Transaction!]!
   insurances: [Insurance!]!
