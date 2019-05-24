@@ -1,10 +1,10 @@
 
-const interestRates = require('./interestRates.js')
-const transacionTypes = require('./transacionTypes.js')
-const insuranceTypes = require('./insuranceTypes.js')
-const depositTypes = require('./depositTypes.js')
-const cardTypes = require('./cardTypes.js')
-const users = require('./user.js')
+import interestRates from './interestRates.js'
+import transacionTypes from'./transacionTypes.js'
+import insuranceTypes from'./insuranceTypes.js'
+import depositTypes from'./depositTypes.js'
+import cardTypes from'./cardTypes.js'
+import users from'./user.js'
 
 export default {
   interestRates,

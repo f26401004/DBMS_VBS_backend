@@ -1,4 +1,4 @@
-const cryptoRandomString = require('crypto-random-string')
+import cryptoRandomString from 'crypto-random-string'
 
 export default [
   {

@@ -1,8 +1,8 @@
-const fs = require('fs')
-const path = require('path')
-const Sequelize = require('sequelize')
-const config = require('./config.json')
-const insertData = require('../utils/insertData')
+import fs from 'fs'
+import path from 'path'
+import Sequelize from 'sequelize'
+import config from './config.json'
+import insertData from '../utils/insertData'
 
 // initialize sequelize
 const sequelize = new Sequelize(config.database, config.username, config.password, {

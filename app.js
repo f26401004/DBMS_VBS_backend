@@ -3,4 +3,4 @@ require("@babel/register")({
 })
 require("@babel/polyfill")
 
-export default require('./server.js')
+module.exports = require('./server.js')

@@ -28,6 +28,22 @@ apolloServer.applyMiddleware({ app })
 app.use(bodyParser.json() , cors())
 app.use(express.static('statics'))
 
+// raw sql operation API
+app.post('/raw-sql', async (req, res) => {
+  try {
+    const sentence = req.body.sql
+    const targetTable = req.body.table
+  
+    const result = await models.instance.query(sentence, {
+      model: targetTable
+    })
+    res.status(200).json(result)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+})
+
 // listen port 3000
 app.listen(3000, function () {
   console.log('Now server is listening on port 3000')
