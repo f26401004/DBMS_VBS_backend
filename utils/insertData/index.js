@@ -6,7 +6,7 @@ const depositTypes = require('./depositTypes.js')
 const cardTypes = require('./cardTypes.js')
 const users = require('./user.js')
 
-module.exports = {
+export default {
   interestRates,
   transacionTypes,
   insuranceTypes,

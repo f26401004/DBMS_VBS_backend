@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     id: 1,
     name: '郵局存提款',

@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     id: 1,
     name: '富麗人生增額保險',

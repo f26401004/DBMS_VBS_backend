@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     id: 1,
     name: '1 月～3 月（未滿 500 萬）',

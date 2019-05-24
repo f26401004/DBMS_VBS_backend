@@ -1,5 +1,6 @@
-const { gql } = require('apollo-server-express')
-module.exports = gql`
+import { gql } from 'apollo-server-express'
+
+export default gql`
 scalar Date
 
 type TransactionType {
@@ -84,7 +85,6 @@ type InterestRate {
   updatedAt: Date
 }
 
-
 type Query {
   users: [User!]!
   cardTypes: [CardType!]!
@@ -96,5 +96,9 @@ type Query {
   insuranceTypes: [InsuranceType!]!
   insurances: [Insurance!]!
   interestRates: [InterestRate!]!
+}
+
+type Mutation {
+  addUser(username: String!, password: String!, SSN: String!, permission: Int!): User
 }
 `

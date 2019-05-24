@@ -1,7 +1,7 @@
-const DataLoader = require('dataloader')
-const models = require('../models')
+import DataLoader from 'dataloader'
+import models from '../models'
 
-module.exports = {
+export default {
   users: new DataLoader(async function (usernames) {
     const users = await models.db.Users.findAll({
       where: {
@@ -10,20 +10,28 @@ module.exports = {
     })
     return users.sort((a, b) => usernames.indexOf(a.username) - usernames.indexOf(b.username))
   }),
-  transactions: new DataLoader(async function (tids) {
-    const transactions = await models.db.Transactions.findAll({
+  transactionTypes: new DataLoader(async function (ids) {
+    const transactionTypes = await models.db.TransactionTypes.findAll({
       where: {
-        tid: tids
+        id: ids
       }
     })
-    return transactions.sort((a, b) => tids.indexOf(a.tid) - tids.indexOf(b.tid))
+    return transactionTypes.sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id))
   }),
-  insurances: new DataLoader(async function (itids) {
-    const insurances = await models.db.Insurances.findAll({
+  insuranceTypes: new DataLoader(async function (ids) {
+    const insuranceTypes = await models.db.InsuranceTypes.findAll({
       where: {
-        itid: itids
+        id: ids
       }
     })
-    return insurances.sort((a, b) => itids.indexOf(a.itid) - itids.indexOf(b.itid))
+    return insuranceTypes.sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id))
+  }),
+  depositTypes: new DataLoader(async function (ids) {
+    const depositTypes = await models.db.DepositTypes.findAll({
+      where: {
+        id: ids
+      }
+    })
+    return depositTypes.sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id))
   })
 }

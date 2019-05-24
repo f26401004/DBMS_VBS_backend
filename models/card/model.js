@@ -1,7 +1,7 @@
-const bcrypt = require('bcryptjs')
-const errorHandler = require('../../utils/errorHandler.js')
+import bcrypt from 'bcrypt'
+import errorHandler from '../../utils/errorHandler.js'
 
-module.exports = (sequelize, Datatypes) => {
+export default (sequelize, Datatypes) => {
   const card = sequelize.define('Cards', {
     cardNo: {
       type: Datatypes.STRING(16),

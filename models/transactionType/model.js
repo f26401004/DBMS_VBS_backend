@@ -1,4 +1,4 @@
-module.exports = (sequelize, Datatypes) => {
+export default (sequelize, Datatypes) => {
   const transactionType = sequelize.define('TransactionTypes', {
     id: {
       type: Datatypes.INTEGER(),

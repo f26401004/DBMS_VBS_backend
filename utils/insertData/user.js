@@ -1,6 +1,6 @@
 const cryptoRandomString = require('crypto-random-string')
 
-module.exports = [
+export default [
   {
     username: 'f26401004',
     password: '$2y$12$x4Lx1RLRXssSjtV4HtNdNumpSeSafUoa/JpMhGZFsIxTbEZfNIvHq',

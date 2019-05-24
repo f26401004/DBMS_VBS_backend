@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     id: 1,
     name: '晶片金融卡',

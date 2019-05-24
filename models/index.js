@@ -71,7 +71,7 @@ sequelize.sync({ force: config.forceSync }).then (async () => {
   console.log('Force sync the database failed!!')
 })
 
-module.exports = {
+export default {
   Sequelize: Sequelize,
   instance: sequelize,
   db: db
