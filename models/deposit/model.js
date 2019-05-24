@@ -33,7 +33,7 @@ export default (sequelize, Datatypes) => {
       allowNull: false
     }
   }, {
-    associate: function (models) {
+    associate: (models) => {
       models.Deposits.belongsTo(models.Users, { foreignKey: 'user', targetKey: 'username' })
       models.Deposits.belongsTo(models.DepositTypes, { foreignKey: 'type', targetKey: 'id' })
     }

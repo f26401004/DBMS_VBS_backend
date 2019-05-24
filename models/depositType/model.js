@@ -28,7 +28,7 @@ export default (sequelize, Datatypes) => {
       allowNull: false
     }
   }, {
-    associate: function (models) {
+    associate: (models) => {
       models.DepositTypes.hasMany(models.Deposits, { foreignKey: 'type', sourceKey: 'id' })
     }
   })

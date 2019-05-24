@@ -15,7 +15,7 @@ const app = express()
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
-  context: async function ({ req }) {
+  context: async ({ req }) => {
     return {
       db: models.db,
       dataloaders: dataLoaders
@@ -23,20 +23,19 @@ const apolloServer = new ApolloServer({
   },
   tracing: true
 })
-apolloServer.applyMiddleware({ app })
+apolloServer.applyMiddleware({ app, path: '/graphql' })
 // register body parser and cors middleware
 app.use(bodyParser.json() , cors())
 app.use(express.static('statics'))
 
-// raw sql operation API
+/**
+ * raw sql operation API
+ * @param String { sentence } The sql sentence to be executed
+ */
 app.post('/raw-sql', async (req, res) => {
   try {
-    const sentence = req.body.sql
-    const targetTable = req.body.table
-  
-    const result = await models.instance.query(sentence, {
-      model: targetTable
-    })
+    const sentence = req.body.sentence
+    const result = await models.instance.query(sentence)
     res.status(200).json(result)
   } catch (error) {
     console.log(error)
@@ -45,6 +44,6 @@ app.post('/raw-sql', async (req, res) => {
 })
 
 // listen port 3000
-app.listen(3000, function () {
+app.listen(3000, () => {
   console.log('Now server is listening on port 3000')
 })

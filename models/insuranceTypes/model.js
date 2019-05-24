@@ -33,7 +33,7 @@ export default (sequelize, Datatypes) => {
       allowNull: false
     }
   }, {
-    associate: function (models) {
+    associate: (models) => {
       // define the itid field has many in insurance table
       models.InsuranceTypes.hasMany(models.Insurances, { foreignKey: 'type', sourceKey: 'id' })
     }

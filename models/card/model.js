@@ -35,13 +35,13 @@ export default (sequelize, Datatypes) => {
       allowNull: false
     }
   }, {
-    associate: function (models) {
+    associate: (models) => {
       models.Cards.belongsTo(models.CardTypes, { foreignKey: 'type', targetKey: 'id' })
       models.Cards.belongsTo(models.Users, { foreignKey: 'owner', targetKey: 'username' })
     }
   })
 
-  card.hash = async function (target) {
+  card.hash = async (target) => {
     try {
       const result = await bcrypt.hash(target, 20)
       return result
@@ -51,7 +51,7 @@ export default (sequelize, Datatypes) => {
     }
   }
 
-  card.verify = async function (target, hashed) {
+  card.verify = async (target, hashed) => {
     try {
       const result = await bcrypt.compare(target, hashed)
       return result

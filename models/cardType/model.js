@@ -19,7 +19,7 @@ export default (sequelize, Datatypes) => {
       allowNull: false
     }
   }, {
-    associate: function (models) {
+    associate: (models) => {
       models.CardTypes.hasMany(models.Cards, { foreignKey: 'type', sourceKey: 'id' })
     }
   })

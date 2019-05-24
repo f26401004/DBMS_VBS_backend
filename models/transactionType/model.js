@@ -20,7 +20,7 @@ export default (sequelize, Datatypes) => {
       allowNull: false
     }
   }, {
-    associate: function (models) {
+    associate: (models) => {
       // define the tid field has many in transaction table
       models.TransactionTypes.hasMany(models.Transactions, { foreignKey: 'type', sourceKey: 'id' })
     }

@@ -38,7 +38,7 @@ export default (sequelize, Datatypes) => {
       allowNull: false
     }
   }, {
-    associate: function (models) {
+    associate: (models) => {
       // define the user/target field belong to user table username filed
       models.Transactions.belongsTo(models.Users, { foreignKey: 'user', targetKey: 'username' })
       models.Transactions.belongsTo(models.Users, { foreignKey: 'target', targetKey: 'username'})

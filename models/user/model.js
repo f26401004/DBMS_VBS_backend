@@ -43,7 +43,7 @@ export default (sequelize, Datatypes) => {
       allowNull: false
     }
   }, {
-    associate: function (models) {
+    associate: (models) => {
       models.Users.hasMany(models.Transactions, { foreignKey: 'user', sourceKey: 'username' })
       models.Users.hasMany(models.Transactions, { foreignKey: 'target', sourceKey: 'username' })
       models.Users.hasMany(models.Insurances, { foreignKey: 'user', sourceKey: 'username' })
@@ -52,7 +52,7 @@ export default (sequelize, Datatypes) => {
     }
   })
 
-  user.hash = async function (target) {
+  user.hash = async (target) => {
     try {
       const result = await bcrypt.hash(target, 20)
       return result
@@ -62,7 +62,7 @@ export default (sequelize, Datatypes) => {
     }
   }
 
-  user.verify = async function (target, hashed) {
+  user.verify = async (target, hashed) => {
     try {
       const result = await bcrypt.compare(target, hashed)
       return result
