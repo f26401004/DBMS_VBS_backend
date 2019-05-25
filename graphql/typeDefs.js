@@ -99,6 +99,6 @@ type Query {
 }
 
 type Mutation {
-  addUser(username: String!, password: String!, SSN: String!, permission: Int!): User
+  deleteUsers(keys: [String!]!): User
 }
 `
