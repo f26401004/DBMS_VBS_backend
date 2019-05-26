@@ -3,36 +3,6 @@ import { gql } from 'apollo-server-express'
 export default gql`
 scalar Date
 
-type TransactionType {
-  tid: ID!
-  name: String
-  createdAt: Date
-  updatedAt: Date
-}
-type Transaction {
-  tid: ID!
-  user: User
-  target: User
-  type: TransactionType
-  value: Float
-  createdAt: Date
-  updatedAt: Date
-}
-type InsuranceType {
-  itid: ID!
-  name: String
-  interest_rate: Float
-  createdAt: Date
-  updatedAt: Date
-}
-type Insurance {
-  id: ID!
-  user: User
-  type: InsuranceType
-  terms: Int
-  createdAt: Date
-  updatedAt: Date
-}
 type User {
   username: ID!
   SSN: String
@@ -44,22 +14,52 @@ type User {
   transactions: [Transaction!]!
   insurances: [Insurance!]!
 }
+type Card {
+  cardNo: ID!
+  csc: String
+  type: CardType
+  assets: Float
+  owner: String
+  createdAt: Date
+  updatedAt: Date
+}
 type CardType {
   id: ID!
   name: String
   createdAt: Date
   updatedAt: Date
 }
-type Card {
-  cardNo: ID!
-  csc: String
-  type: Int
-  assets: Float
-  owner: String
+type Transaction {
+  id: ID!
+  user: User
+  target: User
+  type: TransactionType
+  value: Float
   createdAt: Date
   updatedAt: Date
 }
-
+type TransactionType {
+  id: ID!
+  name: String
+  createdAt: Date
+  updatedAt: Date
+}
+type Insurance {
+  id: ID!
+  user: User
+  type: InsuranceType
+  term: Int
+  paid: Int
+  createdAt: Date
+  updatedAt: Date
+}
+type InsuranceType {
+  id: ID!
+  name: String
+  interest_rate: Float
+  createdAt: Date
+  updatedAt: Date
+}
 type Deposit {
   id: ID!
   user: String
@@ -76,7 +76,6 @@ type DepositType {
   createdAt: Date
   updatedAt: Date
 }
-
 type InterestRate {
   id: ID!
   name: String

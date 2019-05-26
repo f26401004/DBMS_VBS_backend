@@ -40,8 +40,8 @@ export default (sequelize, Datatypes) => {
   }, {
     associate: (models) => {
       // define the user/target field belong to user table username filed
-      models.Transactions.belongsTo(models.Users, { foreignKey: 'user', targetKey: 'username' })
-      models.Transactions.belongsTo(models.Users, { foreignKey: 'target', targetKey: 'username'})
+      // models.Transactions.belongsTo(models.Users, { foreignKey: 'user', targetKey: 'username', onDelete: 'CASCADE' })
+      // models.Transactions.belongsTo(models.Users, { foreignKey: 'target', targetKey: 'username', onDelete: 'CASCADE' })
       // define the type field belong to transaction types table tid field
       models.Transactions.belongsTo(models.TransactionTypes, { foreignKey: 'type', targetKey: 'id' })
       // define the cardNo belong to cards table cardNo field

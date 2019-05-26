@@ -4,6 +4,7 @@ import { ApolloServer } from 'apollo-server-express'
 import dataLoaders from './graphql/dataLoader.js'
 import typeDefs from './graphql/typeDefs.js'
 import resolvers from './graphql/resolvers'
+import rawQueryLimit from './graphql/rawQueryLimit.js'
 import models from './models/index.js'
 
 import cors from 'cors'
@@ -35,6 +36,8 @@ app.use(express.static('statics'))
 app.post('/raw-sql', async (req, res) => {
   try {
     const sentence = req.body.sentence
+    const permission = req.body.permission
+    const tableName = req.body.tableName
     // detect the type of raw query
     let type;
     if (sentence.toLowerCase().indexOf('select') > -1) {
@@ -48,6 +51,16 @@ app.post('/raw-sql', async (req, res) => {
     const result = await models.instance.query(sentence, {
       type: type
     })
+    // filter out the columns with different permission
+    if (permission != 2 && tableName) {
+      result = result.map(target => {
+        const temp = {}
+        rawQueryLimit[tableName].forEach(key => {
+          temp[key] = target[key]
+        })
+        return temp
+      })
+    }
 
     res.status(200).json(result)
   } catch (error) {
