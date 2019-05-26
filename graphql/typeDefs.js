@@ -99,6 +99,15 @@ type Query {
 }
 
 type Mutation {
-  deleteUsers(keys: [String!]!): User
+  deleteUsers(keys: [String!]!): [User!]!
+  deleteCards(keys: [Int!]!): [Card!]!
+  deleteCardTypes(keys: [Int!]!): [CardType!]!
+  deleteTransactions(keys: [Int!]!): [Transaction!]!
+  deleteTransactionTypes(keys: [Int!]!): [TransactionType!]!
+  deleteInsurances(keys: [Int!]!): [Insurance!]!
+  deleteInsuranceTypes(keys: [Int!]!): [InsuranceType!]!
+  deleteDeposits(keys: [Int!]!): [Deposit!]!
+  deleteDepositTypes(keys: [Int!]!): [DepositType!]!
+  deleteInterestRates(keys: [Int!]!): [InterestRate!]!
 }
 `
