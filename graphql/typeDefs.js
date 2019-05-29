@@ -18,7 +18,7 @@ type Card {
   csc: String
   type: CardType
   assets: Float
-  owner: String
+  owner: User
   createdAt: Date
   updatedAt: Date
 }
@@ -30,8 +30,8 @@ type CardType {
 }
 type Transaction {
   id: ID!
-  user: User
-  target: User
+  userCard: Card
+  targetCard: Card
   type: TransactionType
   value: Float
   createdAt: Date
@@ -61,8 +61,9 @@ type InsuranceType {
 }
 type Deposit {
   id: ID!
-  user: String
-  type: Int
+  user: User
+  type: DepositType
+  paid: Int
   term: Int
   createdAt: Date
   updatedAt: Date
@@ -97,6 +98,7 @@ type Query {
 }
 
 type Mutation {
+  updateUsers(key: String!, username: String!, authCode: String, SSN: String, permission: Int): User
   deleteUsers(keys: [String!]!): [User!]!
   deleteCards(keys: [Int!]!): [Card!]!
   deleteCardTypes(keys: [Int!]!): [CardType!]!

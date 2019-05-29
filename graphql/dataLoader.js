@@ -10,6 +10,14 @@ export default {
     })
     return users.sort((a, b) => usernames.indexOf(a.username) - usernames.indexOf(b.username))
   }),
+  cards: new DataLoader(async (cardNos) => {
+    const cards = await models.db.Cards.findAll({
+      where: {
+        cardNo: cardNos
+      }
+    })
+    return cards.sort((a, b) => cardNos.indexOf(a.cardNo) - cardNos.indexOf(b.cardNo))
+  }),
   cardTypes: new DataLoader(async (ids) => {
     const cardTypes = await models.db.CardTypes.findAll({
       where: {

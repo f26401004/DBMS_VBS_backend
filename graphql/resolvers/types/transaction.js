@@ -1,13 +1,13 @@
 
 export default {
-  user: async (parent, args, context, info) => {
-    let username = parent.dataValues.user
-    const data = await context.dataloaders.users.load(username)
+  userCard: async (parent, args, context, info) => {
+    const cardNo = parent.dataValues.userCard
+    const data = await context.dataloaders.cards.load(cardNo)
     return data
   },
-  target: async (parent, args, context, info) => {
-    username = parent.dataValues.target
-    const data = await context.dataloaders.users.load(username)
+  targetCard: async (parent, args, context, info) => {
+    const cardNo = parent.dataValues.targetCard
+    const data = await context.dataloaders.cards.load(cardNo)
     return data
   },
   type: async (parent, args, context, info) => {

@@ -6,8 +6,8 @@ export default [
   {
     id: uuidv4(),
     type: 3,
-    userCardNo: '0019001001143373',
-    targetCardNo: '0019001001143374',
+    userCard: '0019001001143373',
+    targetCard: '0019001001143374',
     value: 5000,
     createdBy: 'root',
     updatedBy: 'root',
@@ -17,8 +17,8 @@ export default [
   {
     id: uuidv4(),
     type: 3,
-    userCardNo: '0019001001143374',
-    targetCardNo: '0019001001143373',
+    userCard: '0019001001143374',
+    targetCard: '0019001001143373',
     value: 1000,
     createdBy: 'root',
     updatedBy: 'root',

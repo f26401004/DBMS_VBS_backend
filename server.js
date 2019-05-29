@@ -19,6 +19,7 @@ const apolloServer = new ApolloServer({
   context: async ({ req }) => {
     return {
       db: models.db,
+      instance: models.instance,
       dataloaders: dataLoaders
     }
   },
