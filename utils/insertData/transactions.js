@@ -5,14 +5,36 @@ date.setMonth(date.getMonth() - 1)
 export default [
   {
     id: uuidv4(),
+    type: 12,
+    userCard: '0019001001143373',
+    targetCard: '0000000000000000',
+    value: 10,
+    createdBy: 'root',
+    updatedBy: 'root',
+    createdAt: date,
+    updatedAt: date
+  },
+  {
+    id: uuidv4(),
     type: 3,
     userCard: '0019001001143373',
-    targetCard: '0019001001143374',
+    targetCard: '0000000000000000',
     value: 5000,
     createdBy: 'root',
     updatedBy: 'root',
     createdAt: date,
     updatedAt: date
+  },
+  {
+    id: uuidv4(),
+    type: 12,
+    userCard: '0019001001143374',
+    targetCard: '0000000000000000',
+    value: 10,
+    createdBy: 'root',
+    updatedBy: 'root',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: uuidv4(),

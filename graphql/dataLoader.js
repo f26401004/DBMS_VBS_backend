@@ -26,6 +26,14 @@ export default {
     })
     return cardTypes.sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id))
   }),
+  transactions: new DataLoader(async (ids) => {
+    const transactions = await models.db.Transactions.findAll({
+      where: {
+        id: ids
+      }
+    })
+    return transactions.sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id))
+  }),
   transactionTypes: new DataLoader(async (ids) => {
     const transactionTypes = await models.db.TransactionTypes.findAll({
       where: {
@@ -33,6 +41,14 @@ export default {
       }
     })
     return transactionTypes.sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id))
+  }),
+  insurances: new DataLoader(async (ids) => {
+    const insurances = await models.db.Insurances.findAll({
+      where: {
+        id: ids
+      }
+    })
+    return insurances.sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id))
   }),
   insuranceTypes: new DataLoader(async (ids) => {
     const insuranceTypes = await models.db.InsuranceTypes.findAll({

@@ -64,5 +64,11 @@ export default [
     name: '跨行轉帳手續費',
     createdBy: 'root',
     updatedBy: 'root'
+  },
+  {
+    id: 12,
+    name: '非跨行轉帳手續費',
+    createdBy: 'root',
+    updatedBy: 'root'
   }
 ]

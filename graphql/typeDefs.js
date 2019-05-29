@@ -23,7 +23,7 @@ type Card {
   updatedAt: Date
 }
 type CardType {
-  id: ID!
+  id: Int!
   name: String
   createdAt: Date
   updatedAt: Date
@@ -38,7 +38,7 @@ type Transaction {
   updatedAt: Date
 }
 type TransactionType {
-  id: ID!
+  id: Int!
   name: String
   createdAt: Date
   updatedAt: Date
@@ -53,7 +53,7 @@ type Insurance {
   updatedAt: Date
 }
 type InsuranceType {
-  id: ID!
+  id: Int!
   name: String
   interest_rate: Float
   createdAt: Date
@@ -69,7 +69,7 @@ type Deposit {
   updatedAt: Date
 }
 type DepositType {
-  id: ID!
+  id: Int!
   name: String
   floating_interest: Float
   fixed_interest: Float
@@ -77,7 +77,7 @@ type DepositType {
   updatedAt: Date
 }
 type InterestRate {
-  id: ID!
+  id: Int!
   name: String
   value: Float
   createdAt: Date
@@ -98,15 +98,25 @@ type Query {
 }
 
 type Mutation {
-  updateUsers(key: String!, username: String!, authCode: String, SSN: String, permission: Int): User
+  updateUsers(key: String!, username: String, authCode: String, SSN: String, permission: Int): User
+  updateCards(key: String!, cardNo: String, csc: String, type: Int, assets: Float, owner: String): Card
+  updateCardTypes(key: Int!, id: Int, name: String): CardType
+  updateTransactions(key: String!, id: String, userCard: String, targetCard: String, type: Int, value: Float): Transaction
+  updateTransactionTypes(key: Int!, id: Int, name: String): TransactionType
+  updateInsurances(key: String!, id: String, user: String, type: Int, term: Int, paid: Int): Insurance
+  updateInsuranceTypes(key: Int!, id: Int, name: String): InsuranceType
+  updateDeposits(key: String!, id: String, user: String, type: Int, term: Int, paid: Int): Deposit
+  updateDepositTypes(key: Int!, id: Int, name: String): DepositType
+  updateInterestRates(key: Int!, id: Int, name: String, value: Float): InterestRate
+
   deleteUsers(keys: [String!]!): [User!]!
   deleteCards(keys: [Int!]!): [Card!]!
   deleteCardTypes(keys: [Int!]!): [CardType!]!
-  deleteTransactions(keys: [Int!]!): [Transaction!]!
+  deleteTransactions(keys: [String!]!): [Transaction!]!
   deleteTransactionTypes(keys: [Int!]!): [TransactionType!]!
-  deleteInsurances(keys: [Int!]!): [Insurance!]!
+  deleteInsurances(keys: [String!]!): [Insurance!]!
   deleteInsuranceTypes(keys: [Int!]!): [InsuranceType!]!
-  deleteDeposits(keys: [Int!]!): [Deposit!]!
+  deleteDeposits(keys: [String!]!): [Deposit!]!
   deleteDepositTypes(keys: [Int!]!): [DepositType!]!
   deleteInterestRates(keys: [Int!]!): [InterestRate!]!
 }

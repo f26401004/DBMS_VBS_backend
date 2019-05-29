@@ -19,5 +19,19 @@ export default [
     value: 0.01040,
     createdBy: 'root',
     updatedBy: 'root'
+  },
+  {
+    id: 4,
+    name: '非跨行轉帳',
+    value: 10,
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
+    id: 5,
+    name: '跨行轉帳',
+    value: 30,
+    createdBy: 'root',
+    updatedBy: 'root'
   }
 ]

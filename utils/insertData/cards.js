@@ -1,5 +1,14 @@
 export default [
   {
+    cardNo: '0000000000000000',
+    csc: '9999',
+    type: 1,
+    owner: 'f26401004',
+    assets: 100000000,
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
     cardNo: '0019001001143373',
     csc: '1234',
     type: 1,
