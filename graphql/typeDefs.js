@@ -98,6 +98,16 @@ type Query {
 }
 
 type Mutation {
+  insertUsers(username: String, password: String, SSN: String, permission: Int): User
+  insertCards(cardNo: String, csc: String, type: Int, assets: Float, owner: String): Card
+  insertCardTypes(id: Int, name: String): CardType
+  insertTransactionTypes(id: Int, name: String): TransactionType
+  insertInsurances(id: ID, user: String, type: Int, term: Int, paid: Int): Insurance
+  insertInsuranceTypes(id: Int, name: String, interest_rate: Float): InsuranceType
+  insertDeposits(id: ID, user: String, type: Int, term: Int, paid: Int): Deposit
+  insertDepositTypes(id: Int, name: String): DepositType
+  insertInterestRates(id: Int, name: String, value: Float): InterestRate
+
   updateUsers(key: String!, username: String, authCode: String, SSN: String, permission: Int): User
   updateCards(key: String!, cardNo: String, csc: String, type: Int, assets: Float, owner: String): Card
   updateCardTypes(key: Int!, id: Int, name: String): CardType

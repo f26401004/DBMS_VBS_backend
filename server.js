@@ -69,7 +69,7 @@ app.post('/raw-sql', async (req, res) => {
   try {
     const sentence = req.body.sentence
     const permission = req.body.permission
-    const tableName = req.body.tableName
+    let tableName = req.body.tableName.charAt(0).toLowerCase() + req.body.tableName.substr(1)
     // detect the type of raw query
     let type;
     if (sentence.toLowerCase().indexOf('select') > -1) {
@@ -87,7 +87,7 @@ app.post('/raw-sql', async (req, res) => {
     if (permission != 2 && tableName) {
       result = result.map(target => {
         const temp = {}
-        rawQueryLimit[tableName.toLowerCase()].forEach(key => {
+        rawQueryLimit[tableName].forEach(key => {
           temp[key] = target[key]
         })
         return temp

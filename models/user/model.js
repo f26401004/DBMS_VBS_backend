@@ -49,7 +49,7 @@ export default (sequelize, Datatypes) => {
 
   user.hash = async (target) => {
     try {
-      const result = await bcrypt.hash(target, 20)
+      const result = await bcrypt.hash(target, 12)
       return result
     } catch (error) {
       console.log(error)
