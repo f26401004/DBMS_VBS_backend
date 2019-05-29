@@ -24,11 +24,6 @@ export default (sequelize, Datatypes) => {
       allowNull: false,
       unique: true
     },
-    assets: {
-      type: Datatypes.DOUBLE(),
-      allowNull: false,
-      defaultValue: 0
-    },
     permission: {
       type: Datatypes.INTEGER(),
       allowNull: false,

@@ -8,7 +8,6 @@ type User {
   SSN: String
   permission: Int
   authCode: String
-  assets: Float
   createdAt: Date
   updatedAt: Date
   transactions: [Transaction!]!

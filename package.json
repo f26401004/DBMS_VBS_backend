@@ -24,6 +24,7 @@
     "express-graphql": "^0.8.0",
     "graphql": "^14.2.1",
     "mysql2": "^1.6.5",
-    "sequelize": "^5.8.4"
+    "sequelize": "^5.8.4",
+    "uuid": "^3.3.2"
   }
 }

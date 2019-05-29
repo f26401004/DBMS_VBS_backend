@@ -30,8 +30,39 @@ app.use(bodyParser.json() , cors())
 app.use(express.static('statics'))
 
 /**
+ * search attribute operation API
+ * @param String { attribute } The attribute to be searched
+ * @param String { keyword } The attribute of keyword
+ * @param String { tableName } The table name in database schema
+ */
+app.post('/search', async (req, res) => {
+  try {
+    const attribute = req.body.attribute
+    const keyword = req.body.keyword
+    const tableName = req.body.tableName
+    // execute select operation
+    let result = await models.instance.query(`SELECT * FROM ${tableName} WHERE ${attribute}='${keyword}'`, {
+      type: models.instance.QueryTypes.SELECT
+    })
+    // filter out the columns no matter what permission is
+    result = result.map(target => {
+      const temp = {}
+      rawQueryLimit[tableName.toLowerCase()].forEach(key => {
+        temp[key] = target[key]
+      })
+      return temp
+    })
+    res.status(200).json(result)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send(error.message)
+  }
+})
+/**
  * raw sql operation API
  * @param String { sentence } The sql sentence to be executed
+ * @param Int { permission } The permission of requester
+ * @param String { tableName } The table name in database schema
  */
 app.post('/raw-sql', async (req, res) => {
   try {
@@ -48,20 +79,19 @@ app.post('/raw-sql', async (req, res) => {
       res.status(500).send('You can only perform select/update operations by raw query!!')
       return
     }
-    const result = await models.instance.query(sentence, {
+    let result = await models.instance.query(sentence, {
       type: type
     })
     // filter out the columns with different permission
     if (permission != 2 && tableName) {
       result = result.map(target => {
         const temp = {}
-        rawQueryLimit[tableName].forEach(key => {
+        rawQueryLimit[tableName.toLowerCase()].forEach(key => {
           temp[key] = target[key]
         })
         return temp
       })
     }
-
     res.status(200).json(result)
   } catch (error) {
     console.log(error)

@@ -7,21 +7,17 @@ export default (sequelize, Datatypes) => {
       allowNull: false,
       unique: true
     },
-    user: {
-      type: Datatypes.STRING(),
+    userCardNo: {
+      type: Datatypes.STRING(16),
       allowNull: false
     },
-    target: {
-      type: Datatypes.STRING(),
+    targetCardNo: {
+      type: Datatypes.STRING(16),
       allowNull: false
     },
     type: {
       type: Datatypes.INTEGER(),
       defaultValues: 0,
-      allowNull: false
-    },
-    cardNo: {
-      type: Datatypes.STRING(16),
       allowNull: false
     },
     value: {
@@ -45,7 +41,8 @@ export default (sequelize, Datatypes) => {
       // define the type field belong to transaction types table tid field
       models.Transactions.belongsTo(models.TransactionTypes, { foreignKey: 'type', targetKey: 'id' })
       // define the cardNo belong to cards table cardNo field
-      models.Transactions.belongsTo(models.Cards, { foreignKey: 'cardNo', targetKey: 'cardNo' })
+      models.Transactions.belongsTo(models.Cards, { foreignKey: 'userCardNo', targetKey: 'cardNo' })
+      models.Transactions.belongsTo(models.Cards, { foreignKey: 'targetCardNo', targetKey: 'cardNo' })
     }
   }, {
     indexes: [

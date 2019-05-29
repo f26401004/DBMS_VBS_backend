@@ -62,6 +62,10 @@ sequelize.sync({ force: config.forceSync }).then (async () => {
     console.log('default deposit type table complete initialization')
     await db.CardTypes.bulkCreate(insertData.cardTypes)
     console.log('default card type table complete initialization')
+    await db.Cards.bulkCreate(insertData.cards)
+    console.log('default card table complete initialization')
+    await db.Transactions.bulkCreate(insertData.transactions)
+    console.log('default transaction table complete initialization')
   } else {
     console.log('Sync the database success!!')
   }
