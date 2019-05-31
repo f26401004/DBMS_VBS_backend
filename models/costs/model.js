@@ -1,5 +1,5 @@
 export default (sequelize, Datatypes) => {
-  const interestRate = sequelize.define('InterestRates', {
+  const costs = sequelize.define('Costs', {
     id: {
       type: Datatypes.INTEGER(),
       primaryKey: true,
@@ -27,5 +27,5 @@ export default (sequelize, Datatypes) => {
     }
   })
 
-  return interestRate
+  return costs
 }

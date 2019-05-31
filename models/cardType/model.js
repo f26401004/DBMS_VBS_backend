@@ -10,6 +10,16 @@ export default (sequelize, Datatypes) => {
       type: Datatypes.STRING(),
       allowNull: false
     },
+    bonusRate: {
+      type: Datatypes.DOUBLE(8, 5),
+      defaultValues: 0,
+      allowNull: false
+    },
+    interestRate: {
+      type: Datatypes.DOUBLE(8, 5),
+      defaultValues: 0,
+      allowNull: false
+    },
     createdBy: {
       type: Datatypes.STRING(),
       allowNull: false

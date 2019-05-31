@@ -186,16 +186,16 @@ export default {
       console.log(error)
     }
   },
-  updateInterestRates: async (parent, args, context, info) => {
+  updateCosts: async (parent, args, context, info) => {
     try {
-      const target = await context.db.InterestRates.findOne({
+      const target = await context.db.Costs.findOne({
         where: {
           id: args.key
         }
       })
       await context.instance.transaction(t => {
         // update the data
-        return context.db.InterestRates.update({
+        return context.db.Costs.update({
           id: args.id ? args.id : target.id,
           name: args.name ? args.name : target.name,
           value: args.value ? args.value : target.value

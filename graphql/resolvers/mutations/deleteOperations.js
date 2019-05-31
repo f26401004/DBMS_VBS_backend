@@ -150,16 +150,16 @@ export default {
       console.log(error)
     }
   },
-  deleteInterestRates: async (parent, args, context, info) => {
+  deleteCosts: async (parent, args, context, info) => {
     try {
       // get the target
-      const target = await context.db.InterestRates.findAll({
+      const target = await context.db.Costs.findAll({
         where: {
           id: args.keys
         }
       })
       // destroy the data
-      await context.db.InterestRates.destroy({
+      await context.db.Costs.destroy({
         where: {
           id: args.keys
         }

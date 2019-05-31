@@ -119,9 +119,9 @@ export default {
       console.log(error)
     }
   },
-  insertInterestRates: async (parent, args, context, info) => {
+  insertCosts: async (parent, args, context, info) => {
     try {
-      const result = await context.db.InterestRates.create({
+      const result = await context.db.Costs.create({
         id: args.id,
         name: args.name,
         value: args.value,

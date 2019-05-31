@@ -25,6 +25,8 @@ type Card {
 type CardType {
   id: Int!
   name: String
+  bonusRate: Float
+  interestRate: Float
   createdAt: Date
   updatedAt: Date
 }
@@ -76,7 +78,7 @@ type DepositType {
   createdAt: Date
   updatedAt: Date
 }
-type InterestRate {
+type Cost {
   id: Int!
   name: String
   value: Float
@@ -94,7 +96,7 @@ type Query {
   transactions: [Transaction!]!
   insuranceTypes: [InsuranceType!]!
   insurances: [Insurance!]!
-  interestRates: [InterestRate!]!
+  costs: [Cost!]!
 }
 
 type Mutation {
@@ -106,7 +108,7 @@ type Mutation {
   insertInsuranceTypes(id: Int, name: String, interest_rate: Float): InsuranceType
   insertDeposits(id: ID, user: String, type: Int, term: Int, paid: Int): Deposit
   insertDepositTypes(id: Int, name: String): DepositType
-  insertInterestRates(id: Int, name: String, value: Float): InterestRate
+  insertCosts(id: Int, name: String, value: Float): Cost
 
   updateUsers(key: String!, username: String, authCode: String, SSN: String, permission: Int): User
   updateCards(key: String!, cardNo: String, csc: String, type: Int, assets: Float, owner: String): Card
@@ -117,7 +119,7 @@ type Mutation {
   updateInsuranceTypes(key: Int!, id: Int, name: String): InsuranceType
   updateDeposits(key: String!, id: String, user: String, type: Int, term: Int, paid: Int): Deposit
   updateDepositTypes(key: Int!, id: Int, name: String): DepositType
-  updateInterestRates(key: Int!, id: Int, name: String, value: Float): InterestRate
+  updateCosts(key: Int!, id: Int, name: String, value: Float): Cost
 
   deleteUsers(keys: [String!]!): [User!]!
   deleteCards(keys: [Int!]!): [Card!]!
@@ -128,6 +130,6 @@ type Mutation {
   deleteInsuranceTypes(keys: [Int!]!): [InsuranceType!]!
   deleteDeposits(keys: [String!]!): [Deposit!]!
   deleteDepositTypes(keys: [Int!]!): [DepositType!]!
-  deleteInterestRates(keys: [Int!]!): [InterestRate!]!
+  deleteCosts(keys: [Int!]!): [Cost!]!
 }
 `

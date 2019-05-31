@@ -35,8 +35,8 @@ export default {
     const data = await context.db.DepositTypes.findAll()
     return data
   },
-  interestRates: async (parent, args, context, info) => {
-    const data = await context.db.InterestRates.findAll()
+  costs: async (parent, args, context, info) => {
+    const data = await context.db.Costs.findAll()
     return data
   }
 }

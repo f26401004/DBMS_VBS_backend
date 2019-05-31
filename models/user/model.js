@@ -3,11 +3,15 @@ import errorHandler from '../../utils/errorHandler.js'
 
 export default (sequelize, Datatypes) => {
   const user = sequelize.define('Users', {
+    SSN: {
+      type: Datatypes.CHAR(10),
+      allowNull: false,
+      primaryKey: true,
+      unique: true
+    },
     username: {
       type: Datatypes.STRING(),
-      primaryKey: true,
-      allowNull: false,
-      unique: true
+      allowNull: false
     },
     password: {
       type: Datatypes.CHAR(60),
@@ -19,10 +23,9 @@ export default (sequelize, Datatypes) => {
       allowNull: false,
       unique: true
     },
-    SSN: {
-      type: Datatypes.CHAR(10),
-      allowNull: false,
-      unique: true
+    birthday: {
+      type: Datatypes.DATEONLY(),
+      allowNull: false
     },
     permission: {
       type: Datatypes.INTEGER(),

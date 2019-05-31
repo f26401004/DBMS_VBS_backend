@@ -13,7 +13,8 @@ export default (sequelize, Datatypes) => {
     },
     targetCard: {
       type: Datatypes.STRING(16),
-      allowNull: false
+      defaultValues: null,
+      allowNull: true
     },
     type: {
       type: Datatypes.INTEGER(),

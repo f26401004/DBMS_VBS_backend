@@ -26,6 +26,11 @@ export default (sequelize, Datatypes) => {
       type: Datatypes.STRING(),
       allowNull: false
     },
+    bonusPoint: {
+      type: Datatypes.INTEGER(),
+      defaultValues: 0,
+      allowNull: false
+    },
     createdBy: {
       type: Datatypes.STRING(),
       allowNull: false

@@ -52,7 +52,7 @@ sequelize.sync({ force: config.forceSync }).then (async () => {
     console.log('Force sync the database success!!')
     await db.Users.bulkCreate(insertData.users)
     console.log('default user table complete initialization')
-    await db.InterestRates.bulkCreate(insertData.interestRates)
+    await db.Costs.bulkCreate(insertData.costs)
     console.log('default interest rate table complete initialization')
     await db.TransactionTypes.bulkCreate(insertData.transacionTypes)
     console.log('default transaction type table complete initialization')

@@ -5,6 +5,7 @@ export default [
     type: 1,
     owner: 'f26401004',
     assets: 100000000,
+    bonusPoint: 0,
     createdBy: 'root',
     updatedBy: 'root'
   },
@@ -14,6 +15,7 @@ export default [
     type: 1,
     owner: 'f26401004',
     assets: 1000000,
+    bonusPoint: 0,
     createdBy: 'root',
     updatedBy: 'root'
   },
@@ -23,6 +25,7 @@ export default [
     type: 1,
     owner: 'gyes00205',
     assets: 10000,
+    bonusPoint: 0,
     createdBy: 'root',
     updatedBy: 'root'
   },
@@ -32,6 +35,7 @@ export default [
     type: 1,
     owner: 'test001',
     assets: 10000,
+    bonusPoint: 0,
     createdBy: 'root',
     updatedBy: 'root'
   },
@@ -41,6 +45,7 @@ export default [
     type: 2,
     owner: 'test002',
     assets: 10000,
+    bonusPoint: 0,
     createdBy: 'root',
     updatedBy: 'root'
   },
@@ -50,6 +55,7 @@ export default [
     type: 2,
     owner: 'test003',
     assets: 10000,
+    bonusPoint: 0,
     createdBy: 'root',
     updatedBy: 'root'
   },
@@ -59,6 +65,7 @@ export default [
     type: 1,
     owner: 'test004',
     assets: 10000,
+    bonusPoint: 0,
     createdBy: 'root',
     updatedBy: 'root'
   },
@@ -68,6 +75,7 @@ export default [
     type: 1,
     owner: 'test005',
     assets: 10000,
+    bonusPoint: 0,
     createdBy: 'root',
     updatedBy: 'root'
   },
@@ -77,6 +85,7 @@ export default [
     type: 2,
     owner: 'test002',
     assets: 10000,
+    bonusPoint: 0,
     createdBy: 'root',
     updatedBy: 'root'
   },
@@ -86,6 +95,7 @@ export default [
     type: 1,
     owner: 'gyes00205',
     assets: 2054000,
+    bonusPoint: 0,
     createdBy: 'root',
     updatedBy: 'root'
   }
