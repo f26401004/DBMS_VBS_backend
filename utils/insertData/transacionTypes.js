@@ -61,12 +61,18 @@ export default [
   },
   {
     id: 11,
-    name: '跨行轉帳手續費',
+    name: '卡片紅利',
     createdBy: 'root',
     updatedBy: 'root'
   },
   {
     id: 12,
+    name: '跨行轉帳手續費',
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
+    id: 13,
     name: '非跨行轉帳手續費',
     createdBy: 'root',
     updatedBy: 'root'

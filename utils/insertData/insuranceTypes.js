@@ -34,5 +34,59 @@ export default [
     terms: 20,
     createdBy: 'root',
     updatedBy: 'root'
+  },
+  {
+    id: 5,
+    name: '康順定期壽險',
+    value: 100000,
+    interest_rate: 0.06250,
+    terms: 12,
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
+    id: 6,
+    name: '安心小額終身壽險',
+    value: 200000,
+    interest_rate: 0.025,
+    terms: 30,
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
+    id: 7,
+    name: '幸福88保險',
+    value: 8888888,
+    interest_rate: 0.04,
+    terms: 20,
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
+    id: 8,
+    name: '微型傷害保險附約',
+    value: 100000,
+    interest_rate: 0.04,
+    terms: 10,
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
+    id: 9,
+    name: '	合家歡增額保險',
+    value: 2000000,
+    interest_rate: 0.02250,
+    terms: 20,
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
+    id: 10,
+    name: '	美利人生利率變動型壽險',
+    value: 3000000,
+    interest_rate: 0.02,
+    terms: 40,
+    createdBy: 'root',
+    updatedBy: 'root'
   }
 ]

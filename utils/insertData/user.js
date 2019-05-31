@@ -52,9 +52,49 @@ export default [
     updatedBy: 'root'
   },
   {
+    username: 'test004',
+    password: '$2y$12$zAsr11S/qCMdDZdcgVGqTuK.V4PLhnfMXWwkJsgOjrrPEk9UKTtJy',
+    SSN: 'E130003604',
+    authCode: cryptoRandomString({ length: 20 }),
+    assets: 1000,
+    permission: 0,
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
+    username: 'test005',
+    password: '$2y$12$diIY5.3ljiNzCP/BKYabxe8.3YFXE5XhHjHEJVcNfyZ2MpN7h/r02',
+    SSN: 'G130003604',
+    authCode: cryptoRandomString({ length: 20 }),
+    assets: 0,
+    permission: 0,
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
     username: 'admin001',
     password: '$2y$12$.yc9WacX.90P.YB9ywpWN.FU/NIxB0K/JTuIoJpSJzVy5DYdMNBSi',
     SSN: 'D130003604',
+    authCode: cryptoRandomString({ length: 20 }),
+    assets: 100000000,
+    permission: 0,
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
+    username: 'admin002',
+    password: '$2y$12$JUzE4S6Le8AeLJctuZ0BJ.CmMfki.m8Y31oVvq8TAY3KbYqsBVEuC',
+    SSN: 'H130003604',
+    authCode: cryptoRandomString({ length: 20 }),
+    assets: 100000000,
+    permission: 0,
+    createdBy: 'root',
+    updatedBy: 'root'
+  },
+  {
+    username: 'admin003',
+    password: '$2y$12$W1XoyrfqhK45EYjPB72.z.CqoD5jEUIqiXs5LRyY0.OY6GRiZfigO',
+    SSN: 'I130003604',
     authCode: cryptoRandomString({ length: 20 }),
     assets: 100000000,
     permission: 0,
