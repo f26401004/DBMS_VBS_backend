@@ -116,6 +116,25 @@ export default {
       console.log(error)
     }
   },
+  deleteInsurancePayments: async (parent, args, context, info) => {
+    try {
+      // get the target
+      const target = await context.db.InsurnacePayments.findAll({
+        where: {
+          id: args.keys
+        }
+      })
+      // destroy the data
+      await context.db.InsurancePayments.destroy({
+        where: {
+          id: args.keys
+        }
+      })
+      return target
+    } catch (error) {
+      console.log(error)
+    }
+  },
   deleteDeposits: async (parent, args, context, info) => {
     try {
       // get the target
@@ -141,6 +160,25 @@ export default {
       const target = await context.dataloaders.depositTypes.loadMany(args.keys)
       // destroy the data
       await context.db.DepositTypes.destroy({
+        where: {
+          id: args.keys
+        }
+      })
+      return target
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  deleteDepositPayments: async (parent, args, context, info) => {
+    try {
+      // get the target
+      const target = await context.db.DepositPayments.findAll({
+        where: {
+          id: args.keys
+        }
+      })
+      // destroy the data
+      await context.db.DepositPayments.destroy({
         where: {
           id: args.keys
         }

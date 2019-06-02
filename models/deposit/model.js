@@ -15,14 +15,10 @@ export default (sequelize, Datatypes) => {
       type: Datatypes.INTEGER(),
       allowNull: false
     },
-    term: {
+    interestType: {
       type: Datatypes.INTEGER(),
+      defaultValues: 0,
       allowNull: false
-    },
-    paid: {
-      type: Datatypes.BOOLEAN(),
-      allowNull: false,
-      defaultValues: false
     },
     createdBy: {
       type: Datatypes.STRING(),
@@ -36,6 +32,7 @@ export default (sequelize, Datatypes) => {
     associate: (models) => {
       // models.Deposits.belongsTo(models.Users, { foreignKey: 'user', targetKey: 'username', onDelete: 'CASCADE' })
       models.Deposits.belongsTo(models.DepositTypes, { foreignKey: 'type', targetKey: 'id' })
+      models.Deposits.hasMany(models.DepositPayments, { foreignKey: 'id', sourceKey: 'id' })
     }
   })
 

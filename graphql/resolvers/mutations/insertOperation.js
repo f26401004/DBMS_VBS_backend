@@ -66,8 +66,6 @@ export default {
         id: args.id,
         user: args.user,
         type: args.type,
-        term: args.term,
-        paid: args.paid,
         createdBy: 'root',
         updatedBy: 'root'
       })
@@ -81,7 +79,24 @@ export default {
       const result = await context.db.InsuranceTypes.create({
         id: args.id,
         name: args.name,
-        interest_rate: args.interest_rate,
+        value: args.value,
+        terms: args.terms,
+        interestRate: args.interestRate,
+        createdBy: 'root',
+        updatedBy: 'root'
+      })
+      return result
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  insertInsurancePayments: async (parent, args, context, info) => {
+    try {
+      const result = await context.db.InsurancePayments.create({
+        id: args.id,
+        deadline: args.deadline,
+        term: args.term,
+        status: args.status,
         createdBy: 'root',
         updatedBy: 'root'
       })
@@ -96,8 +111,7 @@ export default {
         id: args.id,
         user: args.user,
         type: args.type,
-        term: args.term,
-        paid: args.paid,
+        interestType: args.interestType,
         createdBy: 'root',
         updatedBy: 'root'
       })
@@ -111,6 +125,21 @@ export default {
       const result = await context.db.DepositTypes.create({
         id: args.id,
         name: args.name,
+        createdBy: 'root',
+        updatedBy: 'root'
+      })
+      return result
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  insertDepositPayments: async (parent, args, context, info) => {
+    try {
+      const result = await context.db.DepositPayments.create({
+        id: args.id,
+        deadline: args.deadline,
+        term: args.term,
+        status: args.status,
         createdBy: 'root',
         updatedBy: 'root'
       })

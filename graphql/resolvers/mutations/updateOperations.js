@@ -110,9 +110,7 @@ export default {
         return context.db.Insurances.update({
           id: args.id ? args.id : target.id,
           user: args.user ? args.user : target.user,
-          type: args.type ? args.type : target.type,
-          term: args.term ? args.term : target.term,
-          paid: args.paid ? args.paid : target.paid
+          type: args.type ? args.type : target.type
         }, {
           where: {
             id: args.key
@@ -131,7 +129,35 @@ export default {
         // update the data
         return context.db.InsuranceTypes.update({
           id: args.id ? args.id : target.id,
-          name: args.name ? args.name : target.name
+          name: args.name ? args.name : target.name,
+          terms: args.terms ? args.terms : target.terms,
+          interestRate: args.interestRate ? args.interestRate : target.interestRate,
+          value: args.value ? args.value : target.value
+        }, {
+          where: {
+            id: args.key
+          }
+        })
+      })
+      return target
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  updateInsurancePayments: async (parent, args, context, info) => {
+    try {
+      const target = await context.db.InsurancePayments.findAll({
+        where: {
+          id: args.key
+        }
+      })
+      await context.instance.transaction(t => {
+        // update the data
+        return context.db.InsurancePayments.update({
+          id: args.id ? args.id : target.id,
+          deadline: args.deadline ? args.deadline : target.deadline,
+          term: args.term ? args.term : target.term,
+          status: args.status ? args.status : target.status
         }, {
           where: {
             id: args.key
@@ -152,8 +178,7 @@ export default {
           id: args.id ? args.id : target.id,
           user: args.user ? args.user : target.user,
           type: args.type ? args.type : target.type,
-          term: args.term ? args.term : target.term,
-          paid: args.paid ? args.paid : target.paid
+          interestType: args.interestType ? args.interestType : target.interestType
         }, {
           where: {
             id: args.key
@@ -173,8 +198,33 @@ export default {
         return context.db.DepositTypes.update({
           id: args.id ? args.id : target.id,
           name: args.name ? args.name : target.name,
-          floating_interest: args.floating_interest ? args.floating_interest : target.floating_interest,
-          fixed_interest: args.fixed_interest ? args.fixed_interest : target.fixed_interest
+          floatingInterest: args.floatingInterest ? args.floatingInterest : target.floatingInterest,
+          fixedInterest: args.fixedInterest ? args.fixedInterest : target.fixedInterest
+        }, {
+          where: {
+            id: args.key
+          }
+        })
+      })
+      return target
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  updateDepositPayments: async (parent, args, context, info) => {
+    try {
+      const target = await context.db.DepositPayments.findAll({
+        where: {
+          id: args.key
+        }
+      })
+      await context.instance.transaction(t => {
+        // update the data
+        return context.db.DepositPayments.update({
+          id: args.id ? args.id : target.id,
+          deadline: args.deadline ? args.deadline : target.deadline,
+          term: args.term ? args.term : target.term,
+          status: args.status ? args.status : target.status
         }, {
           where: {
             id: args.key

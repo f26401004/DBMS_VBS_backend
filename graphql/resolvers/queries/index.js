@@ -27,12 +27,20 @@ export default {
     const data = await context.db.Insurances.findAll()
     return data
   },
+  insurancePayments: async (parent, args, context, info) => {
+    const data = await context.db.InsurancePayments.findAll()
+    return data
+  },
   deposits: async (parent, args, context, info) => {
     const data = await context.db.Deposits.findAll()
     return data
   },
   depositTypes: async (parent, args, context, info) => {
     const data = await context.db.DepositTypes.findAll()
+    return data
+  },
+  depositPayments: async (parent, args, context, info) => {
+    const data = await context.db.DepositPayments.findAll()
     return data
   },
   costs: async (parent, args, context, info) => {

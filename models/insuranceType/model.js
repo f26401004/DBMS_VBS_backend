@@ -15,7 +15,7 @@ export default (sequelize, Datatypes) => {
       type: Datatypes.INTEGER(),
       allowNull: false
     },
-    interest_rate: {
+    interestRate: {
       type: Datatypes.DOUBLE(8, 5),
       allowNull: false
     },

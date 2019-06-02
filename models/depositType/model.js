@@ -11,11 +11,11 @@ export default (sequelize, Datatypes) => {
       type: Datatypes.STRING(),
       allowNull: false
     },
-    floating_interest: {
+    floatingInterest: {
       type: Datatypes.DOUBLE(8, 5),
       allowNull: false
     },
-    fixed_interest: {
+    fixedInterest: {
       type: Datatypes.DOUBLE(8, 5),
       allowNull: false
     },
