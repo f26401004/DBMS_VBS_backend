@@ -20,7 +20,7 @@ export default (sequelize, Datatypes) => {
     assets: {
       type: Datatypes.DOUBLE(),
       allowNull: false,
-      defaultValues: 0
+      defaultValue: 0
     },
     owner: {
       type: Datatypes.STRING(),
@@ -28,7 +28,7 @@ export default (sequelize, Datatypes) => {
     },
     bonusPoint: {
       type: Datatypes.INTEGER(),
-      defaultValues: 0,
+      defaultValue: 0,
       allowNull: false
     },
     createdBy: {

@@ -2,7 +2,7 @@ export default (sequelize, Datatypes) => {
   const deposit = sequelize.define('Deposits', {
     id: {
       type: Datatypes.UUID(),
-      defaultValues: Datatypes.UUIDV4(),
+      defaultValue: Datatypes.UUIDV4(),
       primaryKey: true,
       allowNull:  false,
       unique: true
@@ -17,7 +17,7 @@ export default (sequelize, Datatypes) => {
     },
     interestType: {
       type: Datatypes.INTEGER(),
-      defaultValues: 0,
+      defaultValue: 0,
       allowNull: false
     },
     createdBy: {

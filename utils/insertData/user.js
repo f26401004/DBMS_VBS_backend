@@ -3,7 +3,7 @@ import cryptoRandomString from 'crypto-random-string'
 export default [
   {
     username: 'f26401004',
-    password: '$2y$12$x4Lx1RLRXssSjtV4HtNdNumpSeSafUoa/JpMhGZFsIxTbEZfNIvHq',
+    password: '$2y$12$/GmRkZflLXpXu98v4Np2ouw1681beVJjky/xD4jpNKpQiwtx66e06',
     SSN: 'F130003604',
     authCode: cryptoRandomString({ length: 20 }),
     assets: 100000,

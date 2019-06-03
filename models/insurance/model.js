@@ -2,7 +2,7 @@ export default (sequelize, Datatypes) => {
   const insurance = sequelize.define('Insurances', {
     id: {
       type: Datatypes.UUID(),
-      defaultValues: Datatypes.UUIDV4(),
+      defaultValue: Datatypes.UUIDV4(),
       primaryKey: true,
       allowNull:  false,
       unique: true

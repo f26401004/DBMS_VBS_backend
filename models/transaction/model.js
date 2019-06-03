@@ -2,7 +2,7 @@ export default (sequelize, Datatypes) => {
   const transaction = sequelize.define('Transactions', {
     id: {
       type: Datatypes.UUID(),
-      defaultValues: Datatypes.UUIDV4(),
+      defaultValue: Datatypes.UUIDV4(),
       primaryKey: true,
       allowNull: false,
       unique: true
@@ -13,17 +13,17 @@ export default (sequelize, Datatypes) => {
     },
     targetCard: {
       type: Datatypes.STRING(16),
-      defaultValues: null,
+      defaultValue: null,
       allowNull: true
     },
     type: {
       type: Datatypes.INTEGER(),
-      defaultValues: 0,
+      defaultValue: 0,
       allowNull: false
     },
     value: {
       type: Datatypes.DOUBLE(),
-      defaultValues: 0,
+      defaultValue: 0,
       allowNull: false
     },
     createdBy: {

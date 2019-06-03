@@ -22,7 +22,7 @@ export default (sequelize, Datatypes) => {
     terms: {
       type: Datatypes.INTEGER(),
       allowNull: false,
-      defaultValues: 1
+      defaultValue: 1
     },
     createdBy: {
       type: Datatypes.STRING(),

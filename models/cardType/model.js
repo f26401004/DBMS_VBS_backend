@@ -12,12 +12,12 @@ export default (sequelize, Datatypes) => {
     },
     bonusRate: {
       type: Datatypes.DOUBLE(8, 5),
-      defaultValues: 0,
+      defaultValue: 0,
       allowNull: false
     },
     interestRate: {
       type: Datatypes.DOUBLE(8, 5),
-      defaultValues: 0,
+      defaultValue: 0,
       allowNull: false
     },
     createdBy: {

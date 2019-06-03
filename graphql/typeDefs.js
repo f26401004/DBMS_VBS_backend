@@ -116,6 +116,8 @@ type Query {
 }
 
 type Mutation {
+  assetsAuth(cardNo: String!, username: String!, password: String!): Boolean
+
   insertUsers(username: String, password: String, SSN: String, permission: Int): User
   insertCards(cardNo: String, csc: String, type: Int, assets: Float, owner: String): Card
   insertCardTypes(id: Int, name: String): CardType
@@ -153,5 +155,7 @@ type Mutation {
   deleteDepositTypes(keys: [Int!]!): [DepositType!]!
   deleteDepositPayments(keys: [String!]!): [DepositPayment!]!
   deleteCosts(keys: [Int!]!): [Cost!]!
+
+  cardAssetsOperation(cardNo: String!, value: Int!): Card
 }
 `

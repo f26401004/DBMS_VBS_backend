@@ -16,7 +16,7 @@ export default (sequelize, Datatypes) => {
     },
     status: {
       type: Datatypes.INTEGER(),
-      defaultValues: 0,
+      defaultValue: 0,
       allowNull: false
     },
     createdBy: {
