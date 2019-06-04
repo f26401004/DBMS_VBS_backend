@@ -8,7 +8,8 @@ export default {
           username: args.username ? args.username : target.username,
           authCode: args.authCode ? args.authCode : target.authCode,
           SSN: args.SSN ? args.SSN : target.SSN,
-          permission: args.permission ? args.permission : target.permission
+          permission: args.permission ? args.permission : target.permission,
+          sex: args.sex ? args.sex : target.sex
         }, {
           where: {
             username: args.key
@@ -178,7 +179,9 @@ export default {
           id: args.id ? args.id : target.id,
           user: args.user ? args.user : target.user,
           type: args.type ? args.type : target.type,
-          interestType: args.interestType ? args.interestType : target.interestType
+          interestType: args.interestType ? args.interestType : target.interestType,
+          terms: args.terms ? args.terms : target.terms,
+          amount: args.amount ? args.amount : target.amount
         }, {
           where: {
             id: args.key

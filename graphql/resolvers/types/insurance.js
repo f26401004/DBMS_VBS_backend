@@ -1,12 +1,12 @@
 export default {
   user: async (parent, args, context, info) => {
-    const username = parent.dataValues.user
-    const data = await context.dataloaders.users.load(username)
+    const user = parent.dataValues.user
+    const data = await context.dataloaders.users.load(user)
     return data
   },
   type: async (parent, args, context, info) => {
-    const type = parent.dataValues.type
-    const data = await context.dataloaders.insuranceTypes.load(type)
+    const id = parent.dataValues.type
+    const data = await context.dataloaders.insuranceTypes.load(id)
     return data
   }
 }

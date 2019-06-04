@@ -7,7 +7,8 @@ export default [
     SSN: 'F130003604',
     authCode: cryptoRandomString({ length: 20 }),
     assets: 100000,
-    permission: 0,
+    permission: 1,
+    sex: 0,
     birthday: '1997-11-06',
     createdBy: 'root',
     updatedBy: 'root'
@@ -19,6 +20,7 @@ export default [
     authCode: cryptoRandomString({ length: 20 }),
     assets: 6000,
     permission: 0,
+    sex: 0,
     birthday: '1998-03-05',
     createdBy: 'root',
     updatedBy: 'root'
@@ -30,6 +32,7 @@ export default [
     authCode: cryptoRandomString({ length: 20 }),
     assets: 1000,
     permission: 0,
+    sex: 1,
     birthday: '1997-11-11',
     createdBy: 'root',
     updatedBy: 'root'
@@ -41,6 +44,7 @@ export default [
     authCode: cryptoRandomString({ length: 20 }),
     assets: 5000,
     permission: 0,
+    sex: 1,
     birthday: '1997-11-11',
     createdBy: 'root',
     updatedBy: 'root'
@@ -52,6 +56,7 @@ export default [
     authCode: cryptoRandomString({ length: 20 }),
     assets: 8000,
     permission: 0,
+    sex: 1,
     birthday: '1997-11-11',
     createdBy: 'root',
     updatedBy: 'root'
@@ -63,6 +68,7 @@ export default [
     authCode: cryptoRandomString({ length: 20 }),
     assets: 1000,
     permission: 0,
+    sex: 1,
     birthday: '1997-11-11',
     createdBy: 'root',
     updatedBy: 'root'
@@ -74,6 +80,7 @@ export default [
     authCode: cryptoRandomString({ length: 20 }),
     assets: 0,
     permission: 0,
+    sex: 1,
     birthday: '1997-11-11',
     createdBy: 'root',
     updatedBy: 'root'
@@ -85,6 +92,7 @@ export default [
     authCode: cryptoRandomString({ length: 20 }),
     assets: 100000000,
     permission: 0,
+    sex: 1,
     birthday: '1997-11-11',
     createdBy: 'root',
     updatedBy: 'root'
@@ -96,6 +104,7 @@ export default [
     authCode: cryptoRandomString({ length: 20 }),
     assets: 100000000,
     permission: 0,
+    sex: 0,
     birthday: '1997-11-11',
     createdBy: 'root',
     updatedBy: 'root'
@@ -107,6 +116,7 @@ export default [
     authCode: cryptoRandomString({ length: 20 }),
     assets: 100000000,
     permission: 0,
+    sex: 0,
     birthday: '1997-11-11',
     createdBy: 'root',
     updatedBy: 'root'

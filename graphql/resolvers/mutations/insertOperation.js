@@ -3,6 +3,11 @@ import cryptoRandomString from 'crypto-random-string'
 export default {
   insertUsers: async (parent, args, context, info) => {
     try {
+      // check if there is the same SSN
+      const target = await context.dataloaders.users.load(args.SSN)
+      if (target) {
+        return target
+      }
       const hashed = await context.db.Users.hash(args.password)
       const result = await context.db.Users.create({
         username: args.username,
@@ -10,6 +15,7 @@ export default {
         SSN: args.SSN,
         authCode: cryptoRandomString({ length: 20 }),
         permission: args.permission,
+        sex: args.sex,
         createdBy: 'root',
         updatedBy: 'root'
       })
@@ -65,6 +71,8 @@ export default {
       const result = await context.db.Insurances.create({
         id: args.id,
         user: args.user,
+        insured: args.insured,
+        beneficiary: args.beneficiary,
         type: args.type,
         createdBy: 'root',
         updatedBy: 'root'
@@ -112,6 +120,8 @@ export default {
         user: args.user,
         type: args.type,
         interestType: args.interestType,
+        terms: args.terms,
+        amount: args.amount,
         createdBy: 'root',
         updatedBy: 'root'
       })

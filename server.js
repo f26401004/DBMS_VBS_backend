@@ -20,7 +20,7 @@ const apolloServer = new ApolloServer({
     return {
       db: models.db,
       instance: models.instance,
-      dataloaders: dataLoaders
+      dataloaders: new dataLoaders()
     }
   },
   tracing: true

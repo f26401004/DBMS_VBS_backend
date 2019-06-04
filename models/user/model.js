@@ -16,7 +16,13 @@ export default (sequelize, Datatypes) => {
     password: {
       type: Datatypes.CHAR(60),
       allowNull: false,
+      defaultValue: bcrypt.hashSync('0000', 12),
       unique: true
+    },
+    sex: {
+      type: Datatypes.INTEGER(),
+      allowNull: false,
+      defaultValue: 0
     },
     authCode: {
       type: Datatypes.CHAR(20),

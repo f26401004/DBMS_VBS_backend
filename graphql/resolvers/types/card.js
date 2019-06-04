@@ -1,7 +1,7 @@
 export default {
   owner: async (parent, args, context, info) => {
-    const username = parent.dataValues.owner
-    const data = await context.dataloaders.users.load(username)
+    const owner = parent.dataValues.owner
+    const data = await context.dataloaders.users.load(owner)
     return data
   },
   type: async (parent, args, context, info) => {
