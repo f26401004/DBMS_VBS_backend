@@ -25,6 +25,11 @@ export default (sequelize, Datatypes) => {
       defaultValue: 0,
       allowNull: false
     },
+    amount: {
+      type: Datatypes.INTEGER(),
+      defaultValue: 0,
+      allowNull: false
+    },
     createdBy: {
       type: Datatypes.STRING(),
       allowNull: false

@@ -39,7 +39,6 @@ export default {
     return true
   },
   cardAssetsOperation: async (parent, args, context, info) => {
-    console.log('test')
     try {
       const target = await context.db.Cards.findOne({
         where: {
@@ -123,6 +122,41 @@ export default {
         })
       })
       return result
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  updateDepositPaymentStatus: async (parent, args, context, info) => {
+    try {
+      const target = await context.db.DepositPayments.findOne({
+        where: {
+          id: args.id,
+          term: args.term
+        }
+      })
+      await context.instance.transaction(t => {
+        target.status = args.status
+        console.log(target)
+        return target.save()
+      })
+      return target
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  updateInsurancePaymentStatus: async (parent, args, context, info) => {
+    try {
+      const target = await context.db.InsurancePayments.findOne({
+        where: {
+          id: args.id,
+          term: args.term
+        }
+      })
+      await context.instance.transaction(t => {
+        target.status = args.status
+        return target.save()
+      })
+      return target
     } catch (error) {
       console.log(error)
     }

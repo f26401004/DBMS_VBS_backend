@@ -50,6 +50,8 @@ type Insurance {
   id: ID!
   user: User
   type: InsuranceType
+  insured: User
+  beneficiary: User
   createdAt: Date
   updatedAt: Date
 }
@@ -90,7 +92,7 @@ type DepositType {
 }
 type DepositPayment {
   id: ID!
-  term: Int
+  term: Int!
   deadline: Date
   status: Int
   createdAt: Date
@@ -100,6 +102,23 @@ type Cost {
   id: Int!
   name: String
   value: Float
+  createdAt: Date
+  updatedAt: Date
+}
+
+input DepositPaymentInput {
+  id: ID!
+  term: Int!
+  deadline: Date
+  status: Int
+  createdAt: Date
+  updatedAt: Date
+}
+input InsurancePaymentInput {
+  id: ID!
+  term: Int!
+  deadline: Date
+  status: Int
   createdAt: Date
   updatedAt: Date
 }
@@ -163,5 +182,7 @@ type Mutation {
   cardAssetsOperation(cardNo: String!, value: Int!): Card
   initInsurancePayments(id: String!, terms: Int!): [InsurancePayment!]!
   initSavingInsurancePayments(id: String!, terms: Int!): [DepositPayment!]!
+  updateDepositPaymentStatus(id: String!, term: Int!, status: Int!): DepositPayment
+  updateInsurancePaymentStatus(id: String!, term: Int!, status: Int!): InsurancePayment
 }
 `
