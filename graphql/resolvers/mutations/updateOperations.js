@@ -2,6 +2,9 @@ export default {
   updateUsers: async (parent, args, context, info) => {
     try {
       const target = await context.dataloaders.users.load(args.key)
+      if (!target) {
+        return
+      }
       await context.instance.transaction(t => {
         // update the data
         return context.db.Users.update({
@@ -9,10 +12,11 @@ export default {
           authCode: args.authCode ? args.authCode : target.authCode,
           SSN: args.SSN ? args.SSN : target.SSN,
           permission: args.permission ? args.permission : target.permission,
-          sex: args.sex ? args.sex : target.sex
+          sex: args.sex !== undefined ? args.sex : target.sex,
+          birthday: args.birthday ? args.birthday : target.birthday
         }, {
           where: {
-            username: args.key
+            SSN: args.key
           }
         })
       })
@@ -31,7 +35,8 @@ export default {
           csc: args.csc ? args.csc : target.csc,
           type: args.type ? args.type : target.type,
           assets: args.assets ? args.assets : target.assets,
-          owner: args.owner ? args.owner : target.owner
+          owner: args.owner ? args.owner : target.owner,
+          bonusPoint: args.bonusPoint ? args.bonusPoint : target.bonusPoint
         }, {
           where: {
             cardNo: args.key
@@ -50,6 +55,8 @@ export default {
         // update the data
         return context.db.CardTypes.update({
           id: args.id ? args.id : target.id,
+          bonusRate: args.bonusRate ? args.bonusRate : target.bonusRate,
+          interestRate: args.interestRate ? args.interestRate : target.interestRate,
           name: args.name ? args.name : target.name
         }, {
           where: {

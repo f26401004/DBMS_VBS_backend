@@ -1,10 +1,15 @@
 import cryptoRandomString from 'crypto-random-string'
+import uniqueRandom from 'unique-random'
 
 export default {
   insertUsers: async (parent, args, context, info) => {
     try {
       // check if there is the same SSN
-      const target = await context.dataloaders.users.load(args.SSN)
+      const target = await context.db.Users.findOne({
+        where: {
+          SSN: args.SSN
+        }
+      })
       if (target) {
         return target
       }
@@ -16,6 +21,7 @@ export default {
         authCode: cryptoRandomString({ length: 20 }),
         permission: args.permission,
         sex: args.sex,
+        birthday: args.birthday,
         createdBy: 'root',
         updatedBy: 'root'
       })
@@ -26,12 +32,14 @@ export default {
   },
   insertCards: async (parent, args, context, info) => {
     try {
+      const csc = "0000" + uniqueRandom(0, 9999)()
       const result = await context.db.Cards.create({
         cardNo: args.cardNo,
-        csc: args.csc,
+        csc: csc.substr(csc.length - 4),
         type: args.type,
         assets: args.assets,
         owner: args.owner,
+        bonusPoint: args.bonusPoint,
         createdBy: 'root',
         updatedBy: 'root'
       })
@@ -45,6 +53,8 @@ export default {
       const result = await context.db.CardTypes.create({
         id: args.id,
         name: args.name,
+        bonusRate: args.bonusRate,
+        interestRate: args.interestRate,
         createdBy: 'root',
         updatedBy: 'root'
       })

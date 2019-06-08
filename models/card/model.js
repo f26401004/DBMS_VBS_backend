@@ -42,7 +42,9 @@ export default (sequelize, Datatypes) => {
   }, {
     associate: (models) => {
       models.Cards.belongsTo(models.CardTypes, { foreignKey: 'type', targetKey: 'id' })
-      // models.Cards.belongsTo(models.Users, { foreignKey: 'owner', targetKey: 'username', onDelete: 'CASCADE' })
+      models.Cards.belongsTo(models.Users, { foreignKey: 'owner', targetKey: 'SSN', onDelete: 'CASCADE' })
+      models.Cards.hasMany(models.Transactions, { foreignKey: 'userCard', sourceKey: 'cardNo', onDelete: 'CASCADE' })
+      models.Cards.hasMany(models.Transactions, { foreignKey: 'targetCard', sourceKey: 'cardNo', onDelete: 'CASCADE' })
     }
   })
 

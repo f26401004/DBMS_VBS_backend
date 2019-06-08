@@ -1,6 +1,22 @@
 export default {
+  user: async (parent, args, context, info) => {
+    const data = await context.db.Users.findOne({
+      where: {
+        SSN: args.SSN
+      }
+    })
+    return data
+  },
   users: async (parent, args, context, info) => {
     const data = await context.db.Users.findAll()
+    return data
+  },
+  card: async (parent, args, context, info) => {
+    const data = await context.db.Cards.findOne({
+      where: {
+        cardNo: args.cardNo
+      }
+    })
     return data
   },
   cards: async (parent, args, context, info) => {

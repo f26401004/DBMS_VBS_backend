@@ -48,11 +48,9 @@ export default (sequelize, Datatypes) => {
     }
   }, {
     associate: (models) => {
-      // models.Users.hasMany(models.Transactions, { foreignKey: 'user', sourceKey: 'username', onDelete: 'CASCADE' })
-      // models.Users.hasMany(models.Transactions, { foreignKey: 'target', sourceKey: 'username', onDelete: 'CASCADE' })
-      // models.Users.hasMany(models.Insurances, { foreignKey: 'user', sourceKey: 'username', onDelete: 'CASCADE' })
-      // models.Users.hasMany(models.Cards, { foreignKey: 'owner', sourceKey: 'username', onDelete: 'CASCADE' })
-      // models.Users.hasMany(models.Deposits, { foreignKey: 'user', sourceKey: 'username', onDelete: 'CASCADE' })
+      models.Users.hasMany(models.Insurances, { foreignKey: 'user', sourceKey: 'SSN', onDelete: 'CASCADE' })
+      models.Users.hasMany(models.Cards, { foreignKey: 'owner', sourceKey: 'SSN', onDelete: 'CASCADE' })
+      models.Users.hasMany(models.Deposits, { foreignKey: 'user', sourceKey: 'SSN', onDelete: 'CASCADE' })
     }
   })
 

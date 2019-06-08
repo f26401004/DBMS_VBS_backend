@@ -4,15 +4,16 @@ export default gql`
 scalar Date
 
 type User {
-  username: ID!
-  SSN: String
+  username: String
+  SSN: ID!
   permission: Int
   authCode: String
   sex: Int
+  birthday: Date
   createdAt: Date
   updatedAt: Date
-  transactions: [Transaction!]!
   insurances: [Insurance!]!
+  cards: [Card!]!
 }
 type Card {
   cardNo: ID!
@@ -20,6 +21,8 @@ type Card {
   type: CardType
   assets: Float
   owner: User
+  bonusPoint: Int
+  transactions: [Transaction]
   createdAt: Date
   updatedAt: Date
 }
@@ -124,7 +127,9 @@ input InsurancePaymentInput {
 }
 
 type Query {
+  user(SSN: String!): User
   users: [User!]!
+  card(cardNo: String!): Card
   cards: [Card!]!
   cardTypes: [CardType!]!
   transactions: [Transaction!]!
@@ -139,8 +144,8 @@ type Query {
 }
 
 type Mutation {
-  insertUsers(username: String, password: String, SSN: String, permission: Int, sex: Int, birthday: String!): User
-  insertCards(cardNo: String, csc: String, type: Int, assets: Float, owner: String): Card
+  insertUsers(username: String, password: String, SSN: String, permission: Int, sex: Int, birthday: String): User
+  insertCards(cardNo: String, csc: String, type: Int, assets: Float, bonusPoint: Int, owner: String): Card
   insertCardTypes(id: Int, name: String): CardType
   insertTransactionTypes(id: Int, name: String): TransactionType
   insertInsurances(id: ID, user: String, insured: String, beneficiary: String, type: Int): Insurance
@@ -151,7 +156,7 @@ type Mutation {
   insertDepositPayments(id: ID, deadline: String, term: Int, status: Int): DepositPayment
   insertCosts(id: Int, name: String, value: Float): Cost
 
-  updateUsers(key: String!, username: String, authCode: String, SSN: String, permission: Int, sex: Int): User
+  updateUsers(key: String!, username: String, authCode: String, SSN: String, permission: Int, sex: Int, birthday: String): User
   updateCards(key: String!, cardNo: String, csc: String, type: Int, assets: Float, owner: String): Card
   updateCardTypes(key: Int!, id: Int, name: String): CardType
   updateTransactions(key: String!, id: String, userCard: String, targetCard: String, type: Int, value: Float): Transaction

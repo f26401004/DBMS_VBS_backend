@@ -8,5 +8,9 @@ export default {
     const id = parent.dataValues.type 
     const data = await context.dataloaders.cardTypes.load(id)
     return data
+  },
+  transactions: async (parent, args, context, info) => {
+    const data = await parent.getTransactions()
+    return data
   }
 }

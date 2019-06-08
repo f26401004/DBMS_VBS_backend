@@ -27,6 +27,7 @@
     "mysql2": "^1.6.5",
     "random-datetime": "^1.0.1",
     "sequelize": "^5.8.4",
+    "unique-random": "^2.1.0",
     "uuid": "^3.3.2"
   }
 }

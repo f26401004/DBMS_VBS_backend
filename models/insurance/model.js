@@ -33,7 +33,7 @@ export default (sequelize, Datatypes) => {
     }
   }, {
     associate: (models) => {
-      // models.Insurances.belongsTo(models.Users, { foreignKey: 'user', targetKey: 'username', onDelete: 'CASCADE' })
+      models.Insurances.belongsTo(models.Users, { foreignKey: 'user', targetKey: 'SSN', onDelete: 'CASCADE' })
       models.Insurances.belongsTo(models.InsuranceTypes, { foreignKey: 'type', targetKey: 'id' })
       models.Insurances.hasMany(models.InsurancePayments, { foreignKey: 'id', sourceKey: 'id' })
     }
