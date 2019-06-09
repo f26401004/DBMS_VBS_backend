@@ -32,19 +32,24 @@ DELETE FROM Users WHERE username='test004';
 ```
 SELECT U.username, T.id FROM Users AS U, Cards AS C, Transactions AS T WHERE T.userCard = C.cardNo AND C.owner = U.username;
 ```
-2. 搜尋所有沒有進行交易的 user 所有資料
+2. 搜尋所有沒有進行交易並且擁有卡片的 user 的 username、SSN 以及卡片持有數量
 ```
-SELECT * FROM Users WHERE username NOT IN (SELECT DISTINCT C.owner AS username FROM Cards AS C, Transactions AS T WHERE T.userCard = C.cardNo);
+SELECT Temp.SSN, Temp.username, COUNT(cardNo)
+ FROM (SELECT username, SSN  FROM Users WHERE SSN NOT IN (SELECT DISTINCT C.owner AS username FROM Cards AS C, Transactions AS T WHERE T.userCard = C.cardNo)) AS Temp, Cards AS C1 WHERE C1.owner = Temp.SSN GROUP BY Temp.SSN, Temp.username;
 ```
-3. 搜尋交易金額大於等於 1000 的交易紀錄數量、總和、平均、最大值、最小值
+3. 搜尋所有沒有進行交易的 user 的 username、SSN
+```
+SELECT username, SSN  FROM Users WHERE SSN NOT IN (SELECT DISTINCT C.owner AS username FROM Cards AS C, Transactions AS T WHERE T.userCard = C.cardNo)
+```
+4. 搜尋交易金額大於等於 1000 的交易紀錄數量、總和、平均、最大值、最小值
 ```
 SELECT COUNT(*), SUM(value), AVG(value), MAX(value), MIN(value) FROM Transactions WHERE value >= 1000;
 ```
-4. 當存在交易金額為 5000 的交易紀錄時，搜尋所有使用者資料（EXIST）
+5. 當存在交易金額為 5000 的交易紀錄時，搜尋所有使用者資料（EXIST）
 ```
 SELECT * FROM Users WHERE EXISTS (SELECT * FROM Transactions WHERE value = 5000);
 ```
-5. 統計 f26401004 使用者目前所有的交易總額（含手續費）
+6. 統計 f26401004 使用者目前所有的交易總額（含手續費）
 ```
 SELECT username, SUM(value) FROM Users AS U, Transactions AS T, Cards AS C WHERE T.userCard = C.cardNo AND C.owner = U.username GROUP BY username HAVING username = 'f26401004';
 ``` 

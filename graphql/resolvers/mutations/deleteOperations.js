@@ -6,7 +6,7 @@ export default {
       // destroy the data
       await context.db.Users.destroy({
         where: {
-          username: args.keys
+          SSN: args.keys
         }
       })
       return target
